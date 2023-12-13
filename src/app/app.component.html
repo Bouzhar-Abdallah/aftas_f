@@ -1,0 +1,23 @@
+<div class="h-screen w-screen bg-whiteGhost overflow-y-auto overflow-x-hidden">
+  <nav
+  
+  class="relative w-full z-50 bg-opacity-70 bg-white shadow-md shadow-slate-200 p-4 flex items-center justify-between">
+    <div class="h-8 w-8 bg-tomato"></div>
+    <div class="">
+      <button class="button">save</button>
+      <button class="button">add</button>
+    </div>
+  </nav>
+
+  <div class="grid grid-cols-4 w-full gap-5 p-5 h-full">
+    <div action="" class=" col-span-1 flex flex-col gap-4 border p-5 bg-white drop-shadow-lg rounded-lg hover:border-orange-300">
+      <div *ngFor="let competition of competitions" class="text-base">
+        <p class="text-base font-normal">{{competition.date}}</p>
+      </div>
+    </div>
+    <div action="" class=" col-span-3 flex flex-col gap-4 border p-5 bg-white drop-shadow-lg rounded-lg hover:border-orange-300">
+      
+    </div>
+  </div>
+
+</div>
