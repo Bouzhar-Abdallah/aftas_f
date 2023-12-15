@@ -2,41 +2,62 @@ import { Time } from '@angular/common';
 
 export class Competition {
   code: string;
-  date: Date;
-  starTime: Time;
-  endTime: Time;
-  numberOfParticipants: number;
   location: string;
+  date: Date|string;
+  startTime: Date|string;
+  endTime: Date|string;
+  numberOfParticipants: number;
   amount: number;
+  timeRemainingBeforeStart: {days: number, hours: number, minutes: number, seconds: number};
+  timeRemainingBeforeEnd: {days: number, hours: number, minutes: number, seconds: number};
+  status: CompetitionStatus;
+  displayDate: string;
+  rankings: any[];
+  inscriptionOpen: boolean;
+  huntOpen: boolean;
+  isToday: boolean;
 
   constructor(
     code: string,
     date: Date,
-    starTime: Time,
-    endTime: Time,
+    displayDate: string,
+    startTime: Date,
+    endTime: Date,
     numberOfParticipants: number,
     location: string,
-    amount: number
+    amount: number,
+    status: CompetitionStatus,
+    timeRemainingBeforeStart: {days: number, hours: number, minutes: number, seconds: number},
+    timeRemainingBeforeEnd: {days: number, hours: number, minutes: number, seconds: number},
+    rankings: any[],
+    inscriptionOpen: boolean,
+    huntOpen: boolean,
+    isToday: boolean,
   ) {
-    this.code = code,
-    this.date = date,
-    this.starTime = starTime,
-    this.endTime = endTime,
-    this.numberOfParticipants = numberOfParticipants,
-    this.location = location,
-    this.amount = amount
+    this.code = code;
+    this.date = date;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.numberOfParticipants = numberOfParticipants;
+    this.location = location;
+    this.amount = amount;
+    this.timeRemainingBeforeStart = timeRemainingBeforeStart;
+    this.timeRemainingBeforeEnd = timeRemainingBeforeEnd;
+    this.status = status;
+    this.displayDate = displayDate;
+    this.rankings = rankings;
+    this.inscriptionOpen = inscriptionOpen;
+    this.huntOpen = huntOpen;
+    this.isToday = isToday;
   }
 }
-// generate an array of 10 competitions starting dates from yesterday locations are morrocan cities
-export const COMPETITIONS: Competition[] = [
-  new Competition('C1', new Date('2020-11-01'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Casablanca', 100),
-  new Competition('C2', new Date('2020-11-02'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Rabat', 100),
-  new Competition('C3', new Date('2020-11-03'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Tanger', 100),
-  new Competition('C4', new Date('2020-11-04'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Fes', 100),
-  new Competition('C5', new Date('2020-11-05'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Meknes', 100),
-  new Competition('C6', new Date('2020-11-06'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Oujda', 100),
-  new Competition('C7', new Date('2020-11-07'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Agadir', 100),
-  new Competition('C8', new Date('2020-11-08'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Marrakech', 100),
-  new Competition('C9', new Date('2020-11-09'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Tetouan', 100),
-  new Competition('C10', new Date('2020-11-10'), {hours: 10, minutes: 30}, {hours: 12, minutes: 30}, 10, 'Kenitra', 100)
-];
+
+
+export enum CompetitionStatus {
+  "past" = "past",
+  'today' = 'today',
+  'future' = 'future',
+  'inProgress' = 'inProgress',
+  'waitingToStart' = 'waitingToStart',
+
+}

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { COMPETITIONS, Competition } from './models/competition.model';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Competition } from './models/competition.model';
+import { EventsService } from './service/events.service';
 
 
 @Component({
@@ -8,8 +9,20 @@ import { COMPETITIONS, Competition } from './models/competition.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'aftas_f';
+  constructor(private eventsService: EventsService){}
+  title = 'aftas club';
+  
+  selectedCompetition$ = this.eventsService.competitionSelected$;
 
-  competitions: Competition[] = COMPETITIONS;
+  onOpen() {
+    this.eventsService.emitEvent('_openCompititionForm');
+  }
+  
+  
+  onClose(){
+    this.eventsService.emitEvent('_closeCompititionForm');
+  }
+  ngOnInit(){
+  }
 
 }

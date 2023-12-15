@@ -1,0 +1,66 @@
+<!-- [ngClass]="state === 'visible' ? 'animate-formAnimation ' : '-top-96'" -->
+<div
+[@openClose]="isOpen ? 'open' : 'closed'"
+ class="flex justify-center items-center absolute w-full transition-all duration-500">
+    
+
+    <form class="" [formGroup]="competitionFrom" (ngSubmit)="onSubmit()"
+        [ngClass]="competitionFrom.valid ? 'border-2 border-cyan' : 'border border-orange-300'"
+        class="  bg-whiteGhost p-5 drop-shadow-lg rounded-lg transition-all duration-400">
+        <div class="flex flex-col gap-5">
+
+            <div class="flex flex-col gap-4">
+
+                <div class="grid grid-cols-6 gap-5">
+                    <label class="font-extralight text-slate-500 capitalize col-span-2" for="location">
+                        location:
+                    </label>
+                    <input type="text" name="location" class="input col-span-4" placeholder="exemple: 'Agadir'"
+                        id="location" formControlName="location">
+                </div>
+
+                <div class="grid grid-cols-6 gap-5">
+                    <label class="font-extralight text-slate-500 capitalize col-span-2" for="location">
+                        date:
+                    </label>
+                    <input class="input col-span-4" placeholder="text" id="" formControlName="date" type="date">
+                </div>
+
+
+                <div class="grid grid-cols-6 gap-5">
+                    <label class="font-extralight text-slate-500 capitalize col-span-2" for="location">
+                        Time:
+                    </label>
+                    <div class="flex items-center col-span-4">
+                        <span class="font-extralight text-slate-500 mr-2">From</span>
+                        <input type="time" class="input" placeholder="start" id="" formControlName="startTime">
+                        <span class="font-extralight text-slate-500 mx-2">To</span>
+                        <input type="time" class="input" placeholder="end" id="" formControlName="endTime">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-6 gap-5">
+
+                    <label class="font-extralight text-slate-500 capitalize col-span-2" for="location">
+                        Participants number:
+                    </label>
+                    <input class="input col-span-4" min="0" id="location"
+                        formControlName="numberOfParticipants" type="number">
+                </div>
+
+                <div class="grid grid-cols-6 gap-5">
+
+                    <label class="font-extralight text-slate-500 capitalize col-span-2" for="location">
+                        amount:
+                    </label>
+                    <input class="input col-span-4" id="location" formControlName="amount" type="number">
+                </div>
+            </div>
+        </div>
+        <div class="w-full flex pt-4 justify-center items-center ">
+            <button
+                [ngClass]="competitionFrom.valid ? ' border-indigo-200 bg-cyan scale-x-105 rounded-md' : 'border border-orange-300 bg-slate-300'"
+                class="py-2 px-5 text-white rounded-sm transition-all duration-500">submit</button>
+        </div>
+    </form>
+</div>

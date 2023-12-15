@@ -14,6 +14,20 @@ module.exports = {
           200: "#888883",
         },
       },
+      animation: {
+        formAnimation: 'formKeyframes 0.7s ease-in 1',
+        formAnimationRemove: 'formKeyframesRemove 0.7s ease-in 1',
+      },
+      keyframes: {
+        formKeyframes: {
+          '0%': {top: '-384px'},
+          '100%': {top: '144px'},
+        },
+        formKeyframesRemove: {
+          '100%': {top: '-384px'},
+          '0%': {top: '144px'},
+        },
+      }
     },
   },
   plugins: [

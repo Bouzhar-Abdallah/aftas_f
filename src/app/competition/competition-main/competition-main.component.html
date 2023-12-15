@@ -1,0 +1,91 @@
+<div class="bg-white " *ngIf="selectedCompetition$ | async as competition ">
+
+    <div class="flex justify-between items-center w-full">
+        <div class="w-1/3 ">
+            <div class="px-5 flex flex-col gap-2">
+                <p class="border-b border-orange-300 w-fit font-thin text-xs text-slate-500">
+                    <span class="font-normal text-jet text-base">{{ competition.location }}</span> Le <span
+                        class="font-normal text-jet text-base">{{ competition.displayDate }}</span>
+                </p>
+                <p class="border-b border-orange-300 w-fit font-thin text-xs text-slate-500">
+                    de <span class="font-normal text-jet text-base">{{ competition.startTime | date:'shortTime'}}</span>
+                    a <span class="font-normal text-jet text-base">{{ competition.endTime | date:'shortTime'}}</span>
+                </p>
+
+            </div>
+        </div>
+
+
+
+        <div class=" flex flex-col gap-2 w-1/3 items-center justify-between px-5 py-10">
+
+            <div [ngClass]="competition.status === 'today' ? 'border-2 border-orange-500' : ''"
+                class="
+        
+        border rounded-md overflow-auto bg-slate-100 w-full py-4 px-3 hover:border-orange-400 hover:shadow-lg hover:scale-105 hover:shadow-orange-400 transition-all duration-500">
+                <div class="grid grid-rows-2 items-center">
+                    <div class="row-span-1 ">
+                        <div *ngIf="competition.inscriptionOpen" class="flex flex-col justify-center items-center">
+                            <p class="text-center  py-2 px-5 rounded-lg">
+                                {{ competition.timeRemainingBeforeStart.days }} jours et
+                                {{ competition.timeRemainingBeforeStart.hours }}:{{
+                                competition.timeRemainingBeforeStart.minutes }}
+                            </p>
+                        </div>
+                        <div *ngIf="competition.huntOpen" class="flex flex-col justify-center items-center">
+                            <p class="text-center  py-2 px-5 rounded-lg">
+                                {{ competition.timeRemainingBeforeEnd.days }} jours et
+                                {{ competition.timeRemainingBeforeEnd.hours }}:{{
+                                competition.timeRemainingBeforeEnd.minutes }}
+
+                            </p>
+                        </div>
+                        <p *ngIf="!(competition.huntOpen && competition.inscriptionOpen) && (competition.huntOpen || !competition.inscriptionOpen) && !competition.huntOpen" 
+                        class="text-center  py-2 px-5 rounded-lg"
+                        
+                        >Competition cloturé
+                        </p>
+                        <p *ngIf="competition.status === 'waitingToStart'" 
+                        class="text-center  py-2 px-5 rounded-lg">
+                        waiting to start
+                        </p>
+                    </div>
+                    <div class="row-span-1">
+                        <hr class="border-orange-200 my-1 ">
+
+                        <!-- </span>{{ competition.date | date:'fullDate'}}</p> -->
+                        <p *ngIf="competition.inscriptionOpen" class="text-center">inscrir</p>
+                        <p *ngIf="competition.huntOpen" class="text-center">hunting</p>
+                        <p *ngIf="!(competition.huntOpen && competition.inscriptionOpen) && (competition.huntOpen || !competition.inscriptionOpen)" class="font-thin text-xs text-slate-500">voir resultats </p>
+                        <!-- <p class="text-sm font-normal text-right"><span
+                                class="text-slate-400 capitalize font-extralight text-xs">
+                            </span>{{competition.startTime | date:'shortTime'}}</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="w-1/3 ">
+            <div class="px-5 flex flex-col gap- items-end">
+                <p class="border-b border-orange-300 w-fit font-thin text-xs text-slate-500 text-right">
+                    nombre de places:
+                    <span class="font-normal text-jet text-base">{{ competition.numberOfParticipants }}</span>
+                </p>
+                <p class="border-b border-orange-300 w-fit font-thin text-xs text-slate-500 text-right">
+                    nombre participants inscrits:
+                    <span class="font-normal text-jet text-base">{{competition.rankings.length}}</span>
+                </p>
+                <p class="border-b border-orange-300 w-fit font-thin text-xs text-slate-500 text-right">
+                    places disponibles:
+                    <span class="font-normal text-jet text-base">{{competition.numberOfParticipants -
+                        competition.rankings.length}}</span>
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
