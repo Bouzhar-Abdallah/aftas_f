@@ -61,7 +61,9 @@ export class CompetitionFormComponent {
     this.buildForm();
 
     this.eventsService.eventEmitted$.subscribe((event) => {
-      this.isOpen = event === '_openCompititionForm';
+      if (event === '_openCompititionForm') {
+        this.isOpen = true;
+      }
       if (event === '_closeCompititionForm') {
         this.competitionFrom.reset();
       }

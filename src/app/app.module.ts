@@ -14,6 +14,8 @@ import { LOCALE_ID } from '@angular/core';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { CompetitionBadgeMainComponent } from './competition/competition-badge-main/competition-badge-main.component';
+import { CompetitionBadgeParticipantComponent } from './competition/competition-badge-participant/competition-badge-participant.component';
+import { MemberListComponent } from './member/member-list/member-list.component';
 registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
@@ -23,6 +25,8 @@ registerLocaleData(localeFr, 'fr-FR');
     CompetitionFormComponent,
     CompetitionMainComponent,
     CompetitionBadgeMainComponent,
+    CompetitionBadgeParticipantComponent,
+    MemberListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,4 @@
-<div
-
- class=" h-screen w-screen bg-whiteGhost overflow-y-auto overflow-x-hidden">
+<div class=" h-screen w-screen bg-whiteGhost overflow-y-auto overflow-x-hidden">
   <nav
     class="hidden relative w-full z-50 bg-opacity-70 bg-white shadow-md shadow-slate-200 p-4 flex items-center justify-between">
     <div class="h-8 w-8 bg-tomato"></div>
@@ -11,26 +9,23 @@
   </nav>
 
   <div class="grid grid-cols-4 w-full gap-5 p-5 h-full">
-    <div class=" col-span-1  border bg-white drop-shadow-lg rounded-lg hover:border-orange-300">
-      <div class=" rounded-t-lg bg-jet p-3 text-whiteGhost bg-opacity-90 hover:bg-opacity-100">
-        <h1 class="text-center">Competitions</h1>
-      </div>
-      <div class="px-5 ">
-        <app-competitions-list></app-competitions-list>
+    <div class="relative h-full w-full ">
 
-      </div>
+      <app-member-list></app-member-list>
+      <app-competitions-list></app-competitions-list>
     </div>
 
+    
+
     <!-- header -->
-    <div
-      class="relative overflow-hidden col-span-3  gap-4 border bg-white  rounded-lg hover:border-orange-300">
-      <div
-      ngClass="competition.status === 'duringPlay' ? 'bg-oragne-300' : ''"
+    <div class="relative overflow-hidden col-span-3  gap-4 border bg-white  rounded-lg hover:border-orange-300">
+      <div ngClass="competition.status === 'duringPlay' ? 'bg-oragne-300' : ''"
         class="flex justify-between relative z-50 bg-whiteGhost bg-opacity-80 px-3 p-4 border-b-orange-300 drop-shadow-lg shadow shadow-orange-300 hover:bg-gradient-to-t hover:from-white hover:to-slate-100 ">
         <div class="flex items-end">
 
           <h1 class="text-2xl font-bold">Competition</h1>
-          <span *ngIf="selectedCompetition$ | async as competition " class="ml-3 text-slate-400 capitalize font-extralight text-xs pb-1">{{competition.code}}
+          <span *ngIf="selectedCompetition$ | async as competition "
+            class="ml-3 text-slate-400 capitalize font-extralight text-xs pb-1">{{competition.code}}
           </span>
 
         </div>
@@ -44,11 +39,11 @@
       </div>
 
 
-  <app-competition-form></app-competition-form>
+      <app-competition-form></app-competition-form>
 
       <!--  -->
 
-<app-competition-main></app-competition-main>
+      <app-competition-main></app-competition-main>
 
       <!--  -->
 
