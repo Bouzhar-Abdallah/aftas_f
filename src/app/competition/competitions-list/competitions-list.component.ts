@@ -17,6 +17,7 @@ export class CompetitionsListComponent {
     private competitionService: CompetitionService,
     private eventsService: EventsService
   ) {}
+  selectedCompetition!: Competition;
 
   competitions$ = this.competitionService.getCompetitions().pipe(
     map((competitions) =>
@@ -54,31 +55,30 @@ export class CompetitionsListComponent {
 
         let currentDate = new Date();
 
+        // during the game
         if (
           currentDate < competition.endTime &&
           currentDate > competition.startTime
         ) {
-          
-          competition.status = CompetitionStatus.inProgress;
+          competition.status = CompetitionStatus.duringPlay;
           competition.huntOpen = true;
         } else {
           competition.huntOpen = false;
         }
-        // here
+        
+        // waiting to start
         if (
-          currentDate < (new Date(new Date(competition.startTime).getTime() - 24*60*60*1000) )
+          currentDate <
+          new Date(
+            new Date(competition.startTime).getTime() - 24 * 60 * 60 * 1000
+          )
         ) {
-          
-          competition.status = CompetitionStatus.inProgress;
+          competition.status = CompetitionStatus.duringPlay;
           competition.inscriptionOpen = true;
         } else {
-          
           competition.inscriptionOpen = false;
           competition.status = CompetitionStatus.waitingToStart;
-          
         }
-
-        
 
         if (
           competition.date.getDate() === currentDate.getDate() &&
@@ -86,21 +86,42 @@ export class CompetitionsListComponent {
           competition.date.getFullYear() === currentDate.getFullYear()
         ) {
           //today
-          competition.status = CompetitionStatus.today;
+          //competition.status = CompetitionStatus.today;
           competition.displayDate = "Aujourd'hui";
         } else if (competition.date < currentDate) {
           //past
           competition.status = CompetitionStatus.past;
         } else {
-          competition.status = CompetitionStatus.future;
+          competition.status = CompetitionStatus.openSubscription;
         }
-        //console.log(competition)
+        /*  */
+
+        // open subscription
+        if (
+          currentDate <
+          new Date(
+            new Date(competition.startTime).getTime() - 24 * 60 * 60 * 1000
+          )
+        ) {
+          competition.status = CompetitionStatus.openSubscription;
+        }else if (currentDate  < competition.startTime) {
+          competition.status = CompetitionStatus.waitingToStart;
+        } else if (currentDate < competition.endTime) {
+          competition.status = CompetitionStatus.duringPlay;
+        }else{
+          competition.status = CompetitionStatus.past;
+        }
+        
+
+
+
         return competition;
       })
     )
   );
 
   selectCompetition(competition: Competition) {
+    this.selectedCompetition = competition;
     this.eventsService.emitCompetitionSelected(competition);
   }
   ngOnInit(): void {

@@ -15,7 +15,7 @@ export class CompetitionMainComponent {
 
   ngOnInit(): void {
     this.eventsService.competitionSelected$.subscribe((item: Competition) => {
-      console.log('from main', item.status)
+      //console.log('from main', item.status)
     })
   }
 

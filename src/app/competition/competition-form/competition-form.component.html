@@ -1,7 +1,7 @@
 <!-- [ngClass]="state === 'visible' ? 'animate-formAnimation ' : '-top-96'" -->
 <div
 [@openClose]="isOpen ? 'open' : 'closed'"
- class="flex justify-center items-center absolute w-full transition-all duration-500">
+ class="flex justify-center items-center absolute w-full transition-all duration-500 z-10">
     
 
     <form class="" [formGroup]="competitionFrom" (ngSubmit)="onSubmit()"

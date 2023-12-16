@@ -55,9 +55,7 @@ export class Competition {
 
 export enum CompetitionStatus {
   "past" = "past",
-  'today' = 'today',
-  'future' = 'future',
-  'inProgress' = 'inProgress',
   'waitingToStart' = 'waitingToStart',
-
+  'duringPlay' = 'duringPlay',
+  'openSubscription' = 'openSubscription',
 }
