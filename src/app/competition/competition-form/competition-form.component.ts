@@ -9,8 +9,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { CompetitionService } from 'src/app/service/competition.service';
-import { Observable, catchError, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { EventsService } from 'src/app/service/events.service';
 import {
   trigger,
@@ -25,7 +23,6 @@ import {
   styleUrls: ['./competition-form.component.css'],
   animations: [
     trigger('openClose', [
-      // ...
       state('open', style({
         top: '120px'
       })),
