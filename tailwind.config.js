@@ -15,22 +15,28 @@ module.exports = {
         },
       },
       animation: {
-        formAnimation: 'formKeyframes 0.7s ease-in 1',
-        formAnimationRemove: 'formKeyframesRemove 0.7s ease-in 1',
+        formAnimation: "formKeyframes 0.7s ease-in 1",
+        formAnimationRemove: "formKeyframesRemove 0.7s ease-in 1",
       },
       keyframes: {
         formKeyframes: {
-          '0%': {top: '-384px'},
-          '100%': {top: '144px'},
+          "0%": { top: "-384px" },
+          "100%": { top: "144px" },
         },
         formKeyframesRemove: {
-          '100%': {top: '-384px'},
-          '0%': {top: '144px'},
+          "100%": { top: "-384px" },
+          "0%": { top: "144px" },
         },
-      }
+      },
+
+      scale: {
+        98: "0.98",
+        99: "0.99",
+        101: "1.01",
+        102: "1.02",
+        103: "1.03",
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };

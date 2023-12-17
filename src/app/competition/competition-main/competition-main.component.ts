@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Competition } from 'src/app/models/competition.model';
 import { CompetitionService } from 'src/app/service/competition.service';
 import { EventsService } from 'src/app/service/events.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-competition-main',
   templateUrl: './competition-main.component.html',
@@ -10,7 +10,7 @@ import { EventsService } from 'src/app/service/events.service';
 })
 export class CompetitionMainComponent {
 
-  constructor(private eventsService: EventsService) {}
+  constructor(private eventsService: EventsService,private _location: Location) {}
 
   selectedCompetition$ = this.eventsService.competitionSelected$;
 
@@ -19,8 +19,9 @@ export class CompetitionMainComponent {
   }
 
   ngOnInit(): void {
-    this.eventsService.competitionSelected$.subscribe((item: Competition) => {
-      //console.log('from main', item.status)
+    this.eventsService.competitionSelected$.subscribe((competition: Competition) => {
+      this._location.go(competition.code)
+      
     })
   }
 
