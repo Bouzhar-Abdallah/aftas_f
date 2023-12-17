@@ -11,7 +11,7 @@ import { EventsService } from 'src/app/service/events.service';
 export class CompetitionBadgeParticipantComponent {
   constructor(private eventsService: EventsService){}
   @Input() ranking!: Ranking;
-
+  
   ngOnInit() {
 
   }

@@ -9,6 +9,11 @@ module.exports = {
         whiteGhost: "#FFFAFF",
         jet: "#303036",
         cyan: "#30BCED",
+        greenDialog: "#8AC926",
+        yellowDialog: "#FFCA3A",
+        blueDialog: "#1982C4",
+        redDialog: "#FF595E",
+        violetDialog: "#6A4C93",
         secondary: {
           100: "#E2E2D5",
           200: "#888883",

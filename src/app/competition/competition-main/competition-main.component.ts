@@ -11,6 +11,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { Ranking } from 'src/app/models/ranking.model';
 @Component({
   selector: 'app-competition-main',
   templateUrl: './competition-main.component.html',
@@ -36,6 +37,7 @@ import {
     ]),
   ],
 })
+
 export class CompetitionMainComponent {
   constructor(
     private eventsService: EventsService,
@@ -59,10 +61,9 @@ export class CompetitionMainComponent {
           this.competition = actualisedCompetition
         })
         //this._location.go('competitions/'.concat(competition.code));
-
       }
-      
     );
+
     this.eventsService.eventEmitted$.subscribe((event) => {
       if (event === '_openMemberList') {
         this.isOpen = true;
@@ -72,7 +73,9 @@ export class CompetitionMainComponent {
       }
     });
     
-    this.eventsService.participantAdded$.subscribe((participant: Member)=>{
+    this.eventsService.participantAdded$.subscribe((participant: Ranking)=>{
+
+      console.log('aded')
       this.competition.rankings.push(participant)
     })
   }

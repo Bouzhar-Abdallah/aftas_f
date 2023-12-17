@@ -1,4 +1,4 @@
-<div class="bg-white relative" *ngIf="selectedCompetition$ | async as SelectedCompetition ">
+<div class="bg-white relative h-full w-full" *ngIf="selectedCompetition$ | async as SelectedCompetition ">
 
     <!-- main competition header -->
     <div class="flex justify-between items-center w-full">
@@ -44,20 +44,21 @@
 
 
     <!-- main competition participants -->
-    <div class="w-full ">
-        <div [@openClose]="isOpen ? 'open' : 'closed'" class="p-5 w-full bg-whiteGhost absolute">
-            <div
-                class=" py-2 border-b-2 border-orange-400 capitalize font-bold bg-whiteGhost pl-4 flex justify-between items-center">
-                <h1 class="">participants</h1>
-                <div *ngIf="competition.status === 'openSubscription'" class="">
-                    <button (click)="emmitOpenMembersListEvent()" class="button">inscrire</button>
-                </div>
-            </div>
-            <div *ngIf="competition.rankings as rankings" class="">
-                <div *ngFor="let ranking of rankings" class="">
-                    <app-competition-badge-participant [ranking]="ranking"></app-competition-badge-participant>
-                </div>
+
+    <div [@openClose]="isOpen ? 'open' : 'closed'" class="p-5 w-full h-full bg-whiteGhost absolute">
+        <div
+            class=" py-2 border-b-2 border-orange-400 capitalize font-bold bg-whiteGhost pl-4 flex justify-between items-center">
+            <h1 class="">participants</h1>
+            <div *ngIf="competition.status === 'openSubscription'" class="">
+                <button (click)="emmitOpenMembersListEvent()" class="button">inscrire</button>
             </div>
         </div>
+        <div *ngIf="competition.rankings as rankings" class="">
+            <div *ngFor="let ranking of rankings" class="">
+                <app-competition-badge-participant [ranking]="ranking"></app-competition-badge-participant>
+            </div>
+
+        </div>
     </div>
+
 </div>

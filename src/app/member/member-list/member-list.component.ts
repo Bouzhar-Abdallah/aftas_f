@@ -11,7 +11,7 @@ import { Member } from 'src/app/models/member.model';
 import { MemberService } from 'src/app/service/member.service';
 import { Competition } from 'src/app/models/competition.model';
 import { ParticipationsService } from 'src/app/service/participations.service';
-import { Participation_Req } from 'src/app/models/ranking.model';
+import { Participation_Req, Ranking } from 'src/app/models/ranking.model';
 
 @Component({
   selector: 'app-member-list',
@@ -65,9 +65,8 @@ export class MemberListComponent {
   }
 
   addParticipant(member: Member) {
-
     this.participationsService.addParticipation(
      this.selectedCompetition, member
-    );
+    )
   }
 }

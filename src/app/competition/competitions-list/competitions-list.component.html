@@ -3,7 +3,7 @@
     <h1 class="text-center">Competitions</h1>
   </div>
   <div class="px-5 ">
-    <div *ngFor="let competition of competitions$ |async" class="text-base my-4 relative z-0">
+    <div *ngFor="let competition of competitions" class="text-base my-4 relative z-0">
       <div [ngClass]="selectedCompetition && competition.code != selectedCompetition.code ? 'opacity-60': 'opacity-0'"
         class="absolute h-full w-full bg-gray-200  rounded-md pointer-events-none transition-all duration-500"></div>
       <div (click)="selectCompetition(competition)"

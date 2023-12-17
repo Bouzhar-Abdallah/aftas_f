@@ -20,14 +20,21 @@ export class CompetitionsListComponent {
   selectedCompetition!: Competition;
 
   competitions$ = this.competitionService.getCompetitions();
-
+  competitions: Competition[] = [];
   selectCompetition(competition: Competition) {
     this.selectedCompetition = competition;
     this.eventsService.emitCompetitionSelected(competition);
   }
   ngOnInit(): void {
-    /*     this.competitionService.getCompetitions().subscribe((data) => {
-      console.log(data);
-    }); */
+    this.competitionService.getCompetitions().subscribe((data) => {
+      this.competitions = data;
+    });
+    this.eventsService.participantAdded$.subscribe((ranking) => {
+      this.competitions.map((competition) => {
+        if (competition.code === ranking.competition?.code) {
+          competition.rankings.push(ranking);
+        }
+      })
+    });
   }
 }

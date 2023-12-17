@@ -6,6 +6,7 @@ import { Competition } from '../models/competition.model';
 import { EventsService } from './events.service';
 import { tap, map } from 'rxjs';
 import { CompetitionStatus } from '../models/competition.model';
+import { Dialog } from '../models/dialog.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -52,8 +53,8 @@ selectedCompetition!: Competition;
 
     return this.http.post<Competition>(this.competitionUrl, competition).pipe(
       catchError((error) => {
-        this.eventsService.emitError(
-          `echec d'enregistrement : location format incorecte`
+        this.eventsService.emitMessage(
+          new Dialog('','error',`echec d'enregistrement : ${error.message}`)
         );
         return throwError(() => error);
       })

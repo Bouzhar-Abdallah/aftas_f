@@ -1,9 +1,6 @@
+<div *ngIf="isVisible" [@showHide]="isVisible ? 'show' : 'hide'"
+    [ngClass]="dialog.type === 'error' ? 'bg-tomato' : 'bg-green-500'"
+    class="absolute z-50 right-0 bottom-0 w-full py-2 text-whiteGhost flex justify-center items-center">
 
-<div
-
-[@showHide]="isVisible ? 'show' : 'hide'"
- class="absolute bg-tomato z-50 right-0 bottom-0 w-full py-2 text-whiteGhost flex justify-center items-center">
-
-    <p  class=" "> {{errorText}} </p>
+    <p class=" "> {{dialog.message}} </p>
 </div>
-
