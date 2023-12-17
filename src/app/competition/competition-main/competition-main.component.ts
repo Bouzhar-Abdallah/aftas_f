@@ -50,7 +50,9 @@ export class CompetitionMainComponent {
 
   emmitOpenMembersListEvent() {
     this.eventsService.emitEvent('_openMemberList');
-    this.isOpen = true;
+  }
+  emmitStartResultsEntryEvent() {
+    this.eventsService.emitEvent('_openMemberList');
   }
   
   ngOnInit(): void {

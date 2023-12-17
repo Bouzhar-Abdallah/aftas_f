@@ -52,6 +52,9 @@
             <div *ngIf="competition.status === 'openSubscription'" class="">
                 <button (click)="emmitOpenMembersListEvent()" class="button">inscrire</button>
             </div>
+            <div *ngIf="competition.status === 'duringPlay'" class="">
+                <button (click)="emmitStartResultsEntryEvent()" class="button">saisie resultats</button>
+            </div>
         </div>
         <div *ngIf="competition.rankings as rankings" class="">
             <div *ngFor="let ranking of rankings" class="">
