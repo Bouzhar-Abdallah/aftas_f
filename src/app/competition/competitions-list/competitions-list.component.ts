@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { Observable, tap, map } from 'rxjs';
 import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
+import {
   Competition,
   CompetitionStatus,
 } from 'src/app/models/competition.model';
@@ -11,6 +18,25 @@ import { EventsService } from 'src/app/service/events.service';
   selector: 'app-competitions-list',
   templateUrl: './competitions-list.component.html',
   styleUrls: ['./competitions-list.component.css'],
+  animations: [
+    trigger('openClose', [
+      state(
+        'open',
+        style({
+          left: '0px',
+        })
+      ),
+      state(
+        'closed',
+        style({
+          left: '-384px',
+          scale: '0.9'
+        })
+      ),
+      transition('open => closed', [animate('0.2s 0.0s ease-in')]),
+      transition('closed => open', [animate('0.3s 0.0s ease-out')]),
+    ]),
+  ],
 })
 export class CompetitionsListComponent {
   constructor(
@@ -18,6 +44,7 @@ export class CompetitionsListComponent {
     private eventsService: EventsService
   ) {}
   selectedCompetition!: Competition;
+  isOpen = true;
 
   competitions$ = this.competitionService.getCompetitions();
   competitions: Competition[] = [];
@@ -36,5 +63,15 @@ export class CompetitionsListComponent {
         }
       })
     });
+    this.eventsService.eventEmitted$.subscribe((event) => {
+      if (event === '_openGameList' || event === '_openMemberList') {
+        this.isOpen = false;
+      }
+      if (event === '_closeGameList' || event === '_closeMemberList') {
+        this.isOpen = true;
+      }
+    });
   }
+
+  
 }

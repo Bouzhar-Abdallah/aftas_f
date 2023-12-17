@@ -22,6 +22,7 @@ export class AppComponent {
   onClose(){
     this.eventsService.emitEvent('_closeCompititionForm');
   }
+  
   ngOnInit(){
   }
 

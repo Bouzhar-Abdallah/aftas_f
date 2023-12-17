@@ -52,7 +52,8 @@ export class CompetitionMainComponent {
     this.eventsService.emitEvent('_openMemberList');
   }
   emmitStartResultsEntryEvent() {
-    this.eventsService.emitEvent('_openMemberList');
+    this.eventsService.emitEvent('_openGameList');
+    this.isOpen = true;
   }
   
   ngOnInit(): void {
@@ -70,9 +71,10 @@ export class CompetitionMainComponent {
       if (event === '_openMemberList') {
         this.isOpen = true;
       }
-      if (event === '_closeMemberList') {
+      if (event === '_closeMemberList' || event === '_closeGameList') {
         this.isOpen = false;
       }
+      
     });
     
     this.eventsService.participantAdded$.subscribe((participant: Ranking)=>{
