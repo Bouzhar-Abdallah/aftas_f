@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Member } from 'src/app/models/member.model';
 import { Ranking } from 'src/app/models/ranking.model';
 import { EventsService } from 'src/app/service/events.service';
 

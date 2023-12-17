@@ -67,7 +67,7 @@ export class MemberListComponent {
   addParticipant(member: Member) {
 
     this.participationsService.addParticipation(
-      new Participation_Req(this.selectedCompetition.code, member.num)
+     this.selectedCompetition, member
     );
   }
 }

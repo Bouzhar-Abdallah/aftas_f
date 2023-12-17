@@ -4,6 +4,8 @@ import { API_URL } from '../config/API_URL';
 import { Participation_Req } from '../models/ranking.model';
 import { Observable, Subject, catchError, of, throwError } from 'rxjs';
 import { EventsService } from './events.service';
+import { Member } from '../models/member.model';
+import { Competition } from '../models/competition.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +17,15 @@ export class ParticipationsService {
   private addparticipantUrl = API_URL + '/ranking/addparticipant';
   private participationsUrl = API_URL + '/ranking/';
 
-  addParticipation(participation: Participation_Req){
-    return this.http.post(this.addparticipantUrl, participation).pipe(
+  addParticipation(competition:Competition,member:Member):Observable<any>{
+
+    return this.http.post(this.addparticipantUrl, new Participation_Req(competition.code, member.num)).pipe(
       catchError( error =>{
-        this.eventsService.emitError(`echec d'enregistrement : le membre num: ${participation.member_num} est d'eja insrit`)
+        if (error) {
+          this.eventsService.emitError(`echec d'enregistrement : le membre num: ${member.num} est d'eja insrit`)
+        }
         return of(error); // return Observable
       })
-    ).subscribe()
+    );
   }
 }

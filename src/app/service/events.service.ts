@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { Competition } from '../models/competition.model';
 import { Member } from '../models/member.model';
 import { Dialog } from '../models/dialog.model';
+import { CompetitionService } from './competition.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,12 @@ export class EventsService {
 
   private eventEmitted = new Subject<string>();
   private competitionSelected = new Subject<Competition>();
-  private participantSelected = new Subject<Member>();
+  private participantAdded = new Subject<Member>();
   private errorOcured = new Subject<string>();
   
   eventEmitted$ = this.eventEmitted.asObservable();
   competitionSelected$ = this.competitionSelected.asObservable();
-  participantSelected$ = this.participantSelected.asObservable();
+  participantAdded$ = this.participantAdded.asObservable();
   errorOcured$ = this.errorOcured.asObservable();
 
   emitEvent(event: string) {
@@ -27,8 +28,11 @@ export class EventsService {
   emitCompetitionSelected(selectedCompetition: Competition) {
     this.competitionSelected.next(selectedCompetition);
   }
-  emitParticipantSelected(selectedMember: Member) {
-    this.participantSelected.next(selectedMember);
+  emitCompetitionUpdated(updatedCompetition: Competition) {
+    this.competitionSelected.next(updatedCompetition);
+  }
+  emitParticipantAdded(AddedMember: Member) {
+    this.participantAdded.next(AddedMember);
   }
   emitError(error: string) {
     this.errorOcured.next(error);

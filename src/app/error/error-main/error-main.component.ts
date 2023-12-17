@@ -35,7 +35,7 @@ export class ErrorMainComponent {
   constructor(private eventsService: EventsService) {}
 
   isVisible: boolean = false;
-  errorOccured$: Observable<string> = this.eventsService.errorOcured$;
+  errorOccured$: Observable<string| any> = this.eventsService.errorOcured$;
   errorText!: string;
   ngOnInit() {
     this.eventsService.errorOcured$.subscribe((error) => {
