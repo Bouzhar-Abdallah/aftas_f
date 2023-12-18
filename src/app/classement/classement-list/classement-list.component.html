@@ -1,0 +1,8 @@
+<div *ngFor="let ranking of rankings" class="">
+    <div class="px-2 py-1 my-1 bg-whiteGhost border border-slate-100 rounded-md mx-2 flex justify-between">
+        
+        <p class="text-left"> <span class="font-normal mx-1">{{ranking.rank}}</span> - {{ranking.member.name}} {{ranking.member.familyName}}</p>
+
+        <p class="">{{ranking.score}} <span class="font-thin text-xs">Pnt</span></p>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div *ngFor="let fish of fishs" class="">
+    <div (click)="selectFish(fish)"
+        class="border flex justify-between p-2 my-2 rounded-md overflow-auto bg-slate-100 hover:border-orange-400 hover:scale-102 hover:bg-whiteGhost hover:shadow-md hover:shadow-orange-300 transition-all duration-500 ease-in-out">
+        <p class="">{{fish.name}}</p>
+        <div class="flex ">
+            <p class="font-normal text-base"> <span class="text-xs font-thin text-slate-500">L</span> {{fish.level.code}}</p>
+            <p class="font-normal text-base ml-1"> 
+                <span class="text-xs font-thin text-slate-500">-</span>
+                {{fish.level.points}}+ </p>
+        </div>
+    </div>
+</div>

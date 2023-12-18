@@ -12,7 +12,7 @@ export class CompetitionBadgeParticipantComponent {
   constructor(private eventsService: EventsService){}
   @Input() ranking!: Ranking;
   
-  ngOnInit() {
-
-  }
+selectParticipant(member: Member){
+  this.eventsService.emitParticipantSelected(member);
+}
 }

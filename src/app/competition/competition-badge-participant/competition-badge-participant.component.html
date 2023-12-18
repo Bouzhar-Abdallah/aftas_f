@@ -1,5 +1,5 @@
 <div class=""></div>
-<div class="grid grid-cols-10 font-light mt-2 pb-1 pt-1 hover:bg-orange-100 border-b border-orange-200 transition-all duration-150 ease-in-out">
+<div (click)="selectParticipant(ranking.member)" class="grid grid-cols-10 font-light mt-2 pb-1 pt-1 hover:bg-orange-100 border-b border-orange-200 transition-all duration-150 ease-in-out">
     <p class="col-span-1">{{ranking.member.num}}</p>
     <p class="col-span-3">{{ranking.member.name}}  {{ranking.member.familyName}}</p>
     <p class="col-span-2 text-center">{{ranking.member.identityNumber}}</p>

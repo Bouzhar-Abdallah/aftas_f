@@ -30,7 +30,7 @@ export class ParticipationsService {
         return EMPTY; // return Observable
       })
       ).subscribe((ranking:Ranking)=>{
-        console.log('from participations servic' , ranking)
+        
         this.eventsService.emitParticipantAdded(ranking)
         this.eventsService.emitMessage(new Dialog('','success',` ${member.name} est insrit avec success`))
     });

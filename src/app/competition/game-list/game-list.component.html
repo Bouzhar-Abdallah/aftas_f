@@ -1,6 +1,7 @@
 <div class="absolute overflow-hidden top-0 z-20 w-full h-full col-span-1 " [@openClose]="isOpen ? 'open' : 'closed'">
     <div class="h-full w-full grid gap-5 grid-rows-3 ">
-        <div class="row-span-1 border bg-white drop-shadow-lg rounded-lg hover:border-orange-300 w-full overflow-hidden">
+        <div
+            class="row-span-1 border bg-white drop-shadow-lg rounded-lg hover:border-orange-300 w-full overflow-hidden">
             <div class="relative rounded-t-lg bg-jet p-3 text-whiteGhost bg-opacity-90 hover:bg-opacity-100">
                 <h1 class="text-center">Classement</h1>
                 <div (click)="CloseMembersList()"
@@ -45,41 +46,34 @@
                 </div>
             </div>
 
-            <div class="w-full grid-rows-3 bg-orange-400">
-                <div class="">
-                    flan tertlan
-                </div>
-
-                <div class="">
-                    flan tertlan
-                </div>
-                <div class="">
-                    flan tertlan
-                </div>
+            <div class="w-full grid-rows-3 ">
+                <app-classement-list></app-classement-list>
             </div>
         </div>
-        <div class="row-span-2 h-full border bg-white drop-shadow-lg rounded-lg hover:border-orange-300 overflow-hidden">
-            <div class="relative rounded-t-lg bg-jet p-3 text-whiteGhost bg-opacity-90 hover:bg-opacity-100">
+        <div
+            class=" row-span-2 h-full border bg-white drop-shadow-lg rounded-lg hover:border-orange-300 overflow-hidden">
+            <div class="relative top-0 rounded-t-lg bg-jet p-3 text-whiteGhost bg-opacity-90 hover:bg-opacity-100">
                 <h1 class="text-center">Poissons</h1>
                 <div (click)="CloseMembersList()"
                     class="absolute right-0 top-0 h-full w-fit hover:bg-tomato flex items-center px-3 transition-all duration-300 ease-in-out">
 
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fb923c"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#fb923c">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                                stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
                 </div>
             </div>
+            <div class="p-5 overflow-scroll h-full">
 
-            <div class="w-full grid-rows-3 bg-orange-400">
-                <div class="">
-                    flan tertlan
-                </div>
-
-                <div class="">
-                    flan tertlan
-                </div>
-                <div class="">
-                    flan tertlan
-                </div>
+                <app-fish-list *ngIf="isOpen"></app-fish-list>
             </div>
+
         </div>
     </div>
 </div>

@@ -2,10 +2,10 @@ import { Competition } from "./competition.model";
 import { Member } from "./member.model";
 
 export class Ranking{
-    rank?: number;
-    score?: number;
+    rank: number;
+    score: number;
     member: Member;
-    competition?: Competition;
+    competition: Competition;
 
     constructor(rank: number, score: number, member: Member, competition: Competition){
         this.rank = rank;

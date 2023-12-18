@@ -18,6 +18,10 @@ import { CompetitionBadgeParticipantComponent } from './competition/competition-
 import { MemberListComponent } from './member/member-list/member-list.component';
 import { ErrorMainComponent } from './error/error-main/error-main.component';
 import { GameListComponent } from './competition/game-list/game-list.component';
+import { FishListComponent } from './fish/fish-list/fish-list.component';
+import { ClassementListComponent } from './classement/classement-list/classement-list.component';
+
+
 registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
@@ -31,6 +35,8 @@ registerLocaleData(localeFr, 'fr-FR');
     MemberListComponent,
     ErrorMainComponent,
     GameListComponent,
+    FishListComponent,
+    ClassementListComponent,
   ],
   imports: [
     BrowserModule,

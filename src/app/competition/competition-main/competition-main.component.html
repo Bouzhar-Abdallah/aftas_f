@@ -41,11 +41,29 @@
             </div>
         </div>
     </div>
-
-
     <!-- main competition participants -->
+    
 
     <div [@openClose]="isOpen ? 'open' : 'closed'" class="p-5 w-full h-full bg-whiteGhost absolute">
+        <div class="px-5 py-3 flex justify-between items-center bg-orange-300 border-orange-400 rounded-md"
+        *ngIf="competition.status === 'duringPlay'"
+        [ngClass]="!isOpen? 'hidden':''"
+       >
+       <div  class="flex gap-3">
+
+           <p *ngIf="selectedMember" class="border  hover:border-orange-300 rounded-md px-2 py-1 bg-orange-300">{{selectedMember.name}} {{selectedMember.familyName}}</p>
+           <p *ngIf="!selectedMember" class="border  hover:border-orange-300 rounded-md px-2 py-1 bg-white capitalize font-light text-base">selectionner membere</p>
+           <p *ngIf="selectedFish" class="border  hover:border-orange-300 rounded-md px-2 py-1 bg-orange-300">{{selectedFish.name}}</p>
+           <p *ngIf="!selectedFish" class="border  hover:border-orange-300 rounded-md px-2 py-1 bg-white capitalize font-light text-base">selectionner poisson</p>
+           <input type="number" [value]="quantity" class="w-16 border  hover:border-orange-300 rounded-md px-2 py-1 bg-white">
+           
+        </div>
+       <div class="">
+
+           <button (click)="addHunt()" class="button w-fit ">Sauvgarder</button>
+        </div>
+       
+       </div>
         <div
             class=" py-2 border-b-2 border-orange-400 capitalize font-bold bg-whiteGhost pl-4 flex justify-between items-center">
             <h1 class="">participants</h1>
@@ -56,6 +74,7 @@
                 <button (click)="emmitStartResultsEntryEvent()" class="button">saisie resultats</button>
             </div>
         </div>
+    
         <div *ngIf="competition.rankings as rankings" class="">
             <div *ngFor="let ranking of rankings" class="">
                 <app-competition-badge-participant [ranking]="ranking"></app-competition-badge-participant>

@@ -12,6 +12,9 @@ import {
   transition,
 } from '@angular/animations';
 import { Ranking } from 'src/app/models/ranking.model';
+import { Fish } from 'src/app/models/fish.model';
+import { HuntService } from 'src/app/service/hunt.service';
+import { Hunt_Req } from 'src/app/models/hunt.model';
 @Component({
   selector: 'app-competition-main',
   templateUrl: './competition-main.component.html',
@@ -42,12 +45,14 @@ export class CompetitionMainComponent {
   constructor(
     private eventsService: EventsService,
     private competitionService: CompetitionService,
-    private _location: Location
+    private huntService: HuntService,
   ) {}
   isOpen = false;
   selectedCompetition$ = this.eventsService.competitionSelected$;
   competition!: Competition;
-
+  selectedMember!: Member;
+  selectedFish!: Fish;
+    quantity: number = 1;
   emmitOpenMembersListEvent() {
     this.eventsService.emitEvent('_openMemberList');
   }
@@ -78,9 +83,25 @@ export class CompetitionMainComponent {
     });
     
     this.eventsService.participantAdded$.subscribe((participant: Ranking)=>{
-
-      console.log('aded')
       this.competition.rankings.push(participant)
     })
+
+    this.eventsService.fishSelected$.subscribe((fish: Fish) => {
+      if (this.selectedFish && fish.name === this.selectedFish.name) {
+        this.quantity++;
+      }else{
+        this.quantity = 1;
+      }
+        this.selectedFish = fish;
+    })
+    this.eventsService.memberSelected$.subscribe((member: Member) => {
+      this.selectedMember = member;
+    })
+  }
+  addHunt(){
+    console.log('main comp')
+    this.huntService.addHunt(
+      new Hunt_Req(this.quantity,this.competition.code,this.selectedMember.num,this.selectedFish.name)
+    )
   }
 }
